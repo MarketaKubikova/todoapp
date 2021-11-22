@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="cs" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>TODO App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>TODO App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
 </head>
 <body>
-<div class="card w-50">
-  <div class="card-header">
-    <div class="row">
-      <div class="col-sm-6">Úkoly</div>
-      <div class="col-sm-6">Datum</div>
+<div class="container">
+
+    <!-- List of tasks -->
+    <div class="row justify-content-between">
+        <div class="card w-50">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-6">Úkoly</div>
+                    <div class="col-sm-6">Datum</div>
+                </div>
+            </div>
+            <ul class="list-group list-group-flush" th:each="task, iterStat : ${taskList}">
+                <li class="list-group-item list-group-item-light">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="card-text" th:text="${task.name}">Uklidit garáž</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="card-text" th:text="${task.date}">21.10. 2021</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
-  <ul class="list-group list-group-flush" th:each="task, iterStat : ${taskList}">
-    <li class="list-group-item list-group-item-light">
-      <div class="row">
-        <div class="col-sm-6">
-          <p class="card-text" th:text="${task.name}">Uklidit garáž</p>
-        </div>
-        <div class="col-sm-6">
-          <p class="card-text" th:text="${task.date}">21.10. 2021</p>
-        </div>
-      </div>
-    </li>
-  </ul>
 </div>
 </body>
 </html>
