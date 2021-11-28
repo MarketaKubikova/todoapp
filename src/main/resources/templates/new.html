@@ -15,32 +15,21 @@
 <body>
 <div class="container">
 
-    <!-- List of tasks -->
+    <!-- Adding new task form -->
     <div class="row justify-content-between">
-        <div class="card w-50">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-6">Úkoly</div>
-                    <div class="col-sm-6">Datum</div>
+        <form action="#" class="w-50" th:action="@{/add}" th:object="${task}" method="post">
+            <div class="form-row">
+                <div class="col-6">
+                    <label for="name">Úkol</label>
+                    <input type="text" th:field="*{name}" class="form-control" id="name" required>
+                </div>
+                <div class="col-6">
+                    <label for="date">Datum</label>
+                    <input type="date" th:field="*{date}" class="form-control" id="date" required>
                 </div>
             </div>
-            <ul class="list-group list-group-flush" th:each="task, iterStat : ${taskList}">
-                <li class="list-group-item list-group-item-light">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <p class="card-text" th:text="${task.name}">Uklidit garáž</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="card-text" th:text="${task.date}">21.10. 2021</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="d-flex justify-content-end">
-        <a href="new.html" th:href="@{/add-task}" class="btn btn-light">Nový úkol</a>
+            <button type="submit" class="btn btn-light">Přidat</button>
+        </form>
     </div>
 </div>
 </body>

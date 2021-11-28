@@ -1,33 +1,28 @@
 package com.example.todoapp.entity;
 
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "TASKS")
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Short id;
-    @Column (name = "name")
+
+    @Column(name = "name")
     private String name;
-    @Column (name = "date")
+
+    @Column(name = "date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
-
-    public Task(Short id, String name, LocalDate date) {
-        this.id = id;
-        this.name = name;
-        this.date = date;
-    }
-
-    public Task(String name, LocalDate date) {
-        this.name = name;
-        this.date = date;
-    }
-
-    public Task() {
-
-    }
 
     @Override
     public String toString() {
@@ -35,29 +30,5 @@ public class Task {
                 "name='" + name + '\'' +
                 ", date='" + date + '\'' +
                 '}';
-    }
-
-    public Short getId() {
-        return id;
-    }
-
-    public void setId(Short id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
     }
 }
