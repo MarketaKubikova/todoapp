@@ -20,18 +20,24 @@
         <div class="card w-50">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-sm-6">Úkoly</div>
-                    <div class="col-sm-6">Datum</div>
+                    <div class="col-sm-5">Úkoly</div>
+                    <div class="col-sm-5">Datum</div>
+                    <div class="col-sm-2">Akce</div>
                 </div>
             </div>
             <ul class="list-group list-group-flush" th:each="task, iterStat : ${taskList}">
                 <li class="list-group-item list-group-item-light">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <p class="card-text" th:text="${task.name}">Uklidit garáž</p>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <p class="card-text" th:text="${task.date}">21.10. 2021</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <form action="#" th:action="@{'/delete/{id}'(id=${task.id})}" th:method="delete" >
+                                <button type="submit" class="btn"><i class="bi bi-trash"></i></button>
+                            </form>
                         </div>
                     </div>
                 </li>
