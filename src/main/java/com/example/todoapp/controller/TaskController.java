@@ -54,4 +54,15 @@ public class TaskController {
         taskService.addTask(task);
         return "redirect:/";
     }
+
+    /**
+     * Deletes selected task from list
+     * @param id is auto-generated id of each task
+     * @return redirects back to index
+     */
+    @DeleteMapping(value="/delete/{id}")
+    public String deleteTask(@PathVariable Short id) {
+        taskService.deleteTask(id);
+        return "redirect:/";
+    }
 }
