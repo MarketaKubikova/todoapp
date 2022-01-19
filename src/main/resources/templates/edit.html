@@ -15,20 +15,20 @@
 <body>
 <div class="container">
 
-    <!-- Adding new task form -->
+    <!-- Form for editing the task -->
     <div class="row justify-content-between">
-        <form action="#" class="w-75" th:action="@{/add}" th:object="${task}" method="post">
+        <form action="#" class="w-75" th:action="@{'/{id}'(id=${task.id})}" th:object="${task.getId()}" method="post">
             <div class="form-row">
                 <div class="col-6">
                     <label for="name">Úkol</label>
-                    <input type="text" th:field="*{name}" class="form-control" id="name" required>
+                    <input type="text" th:field="${task.name}" class="form-control" id="name" required>
                 </div>
                 <div class="col-6">
                     <label for="date">Datum</label>
-                    <input type="date" th:field="*{date}" class="form-control" id="date" required>
+                    <input type="date" th:field="${task.date}" class="form-control" id="date" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-light">Přidat</button>
+            <button type="submit" class="btn btn-light">Uložit</button>
         </form>
     </div>
 </div>

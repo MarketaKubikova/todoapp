@@ -16,13 +16,14 @@
 <div class="container">
 
     <!-- List of tasks -->
-    <div class="row justify-content-between">
-        <div class="card w-50">
+    <div class="row">
+        <div class="col-10">
+        <div class="card w-75">
             <div class="card-header">
                 <div class="row">
                     <div class="col-sm-5">Úkoly</div>
-                    <div class="col-sm-5">Datum</div>
-                    <div class="col-sm-2">Akce</div>
+                    <div class="col-sm-4">Datum</div>
+                    <div class="col-sm-3">Akce</div>
                 </div>
             </div>
             <ul class="list-group list-group-flush" th:each="task, iterStat : ${taskList}">
@@ -31,22 +32,27 @@
                         <div class="col-sm-5">
                             <p class="card-text" th:text="${task.name}">Uklidit garáž</p>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-4">
                             <p class="card-text" th:text="${task.date}">21.10. 2021</p>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
+                            <div class="row">
+                            <a href="edit.html" th:href="@{'/{id}'(id=${task.id})}" class="btn"><i class="bi bi-pencil"></i></a>
                             <form action="#" th:action="@{'/delete/{id}'(id=${task.id})}" th:method="delete" >
                                 <button type="submit" class="btn"><i class="bi bi-trash"></i></button>
                             </form>
+                            </div>
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
-    </div>
-
-    <div class="d-flex justify-content-end">
-        <a href="new.html" th:href="@{/add-task}" class="btn btn-light">Nový úkol</a>
+        </div>
+        <div class="col-2">
+        <div class="justify-content-end">
+            <a href="new.html" th:href="@{/add-task}" class="btn btn-light">Nový úkol</a>
+        </div>
+        </div>
     </div>
 </div>
 </body>
